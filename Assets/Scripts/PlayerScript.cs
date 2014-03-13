@@ -11,8 +11,8 @@ public class PlayerScript : MonoBehaviour {
 
 	public Vector2 speed = new Vector2(25, 0); //This is for movement in both x and y
 
-	private Vector2 movement;
-	private float jumpPower = 0;
+	private Vector2 movement; //Movement holds the actual speed of player. It is input axis times speed. 
+	private float jumpPower = 0; //LATER...
 
 	// Use this for initialization
 	void Start () {
@@ -21,14 +21,10 @@ public class PlayerScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (jumpPower > 0) { jumpPower --; }
-		float inputX = Input.GetAxis("Horizontal");
+
+		float inputX = Input.GetAxis("Horizontal"); //Get axis of controller (instead of button presses!) as per http://docs.unity3d.com/Documentation/ScriptReference/Input.GetAxis.html
 		float inputY = Input.GetAxis("Vertical");
 
-		if (Input.GetKeyDown(KeyCode.Space))
-		    {
-			jumpPower = 1;
-			}
 
 		movement = new Vector2(speed.x * inputX, speed.y * jumpPower );
 
